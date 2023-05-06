@@ -73,23 +73,23 @@ goarch: amd64
 pkg: github.com/anthony-dong/protobuf
 cpu: Intel(R) Xeon(R) Platinum 8260 CPU @ 2.40GHz
 Benchmark_cgo_parse_pb_pb
-Benchmark_cgo_parse_pb_pb-8     	   25118	     49275 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   25916	     47035 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   25940	     46782 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   25016	     48112 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   25872	     46880 ns/op	    1432 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   27422	     42602 ns/op	    1432 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   26983	     42218 ns/op	    1432 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   26937	     41811 ns/op	    1432 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   27123	     45669 ns/op	    1432 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   28070	     42603 ns/op	    1432 B/op	       3 allocs/op
 Benchmark_cgo_parse_pb_json
-Benchmark_cgo_parse_pb_json-8   	    6255	    192098 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6019	    195550 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6166	    194726 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6153	    187322 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    5694	    187708 ns/op	    4120 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6283	    177094 ns/op	    4120 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6192	    174320 ns/op	    4120 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6333	    172869 ns/op	    4120 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6664	    176348 ns/op	    4120 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6202	    175211 ns/op	    4120 B/op	       3 allocs/op
 Benchmark_ParsePBFileDesc
-Benchmark_ParsePBFileDesc-8     	   12237	     96951 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   12291	     98412 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   12217	     99688 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   12262	     97279 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   10000	    102308 ns/op	   22120 B/op	     549 allocs/op
+Benchmark_ParsePBFileDesc-8     	   12792	     91897 ns/op	   22120 B/op	     549 allocs/op
+Benchmark_ParsePBFileDesc-8     	   12818	     93395 ns/op	   22120 B/op	     549 allocs/op
+Benchmark_ParsePBFileDesc-8     	   13386	     93950 ns/op	   22120 B/op	     549 allocs/op
+Benchmark_ParsePBFileDesc-8     	   12522	     97397 ns/op	   22120 B/op	     549 allocs/op
+Benchmark_ParsePBFileDesc-8     	   13010	     97078 ns/op	   22120 B/op	     549 allocs/op
 PASS
-ok  	github.com/anthony-dong/protobuf	24.224s
+ok  	github.com/anthony-dong/protobuf	24.611s
 ```
