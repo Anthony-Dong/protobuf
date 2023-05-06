@@ -1,0 +1,6 @@
+*.out
+*.test
+.idea
+/cmake-build-debug
+/cmake-build-debug-event-trace
+coverage.out

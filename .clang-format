@@ -1,0 +1,33 @@
+IndentWidth: 4
+TabWidth: 4
+
+Language: Cpp
+Standard: c++11
+BasedOnStyle: Google
+# indent
+AccessModifierOffset: -1
+ContinuationIndentWidth: 4
+# align
+BreakBeforeTernaryOperators: true
+BreakBeforeBinaryOperators: None
+BraceWrapping:
+  AfterNamespace: true
+ColumnLimit: 0
+# constructor
+BreakConstructorInitializersBeforeComma: false
+ConstructorInitializerIndentWidth: 4
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+# short block
+#AllowShortBlocksOnASingleLine: false
+#AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+# other
+#AlwaysBreakTemplateDeclarations: true
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# clang-format 3.9+
+SortIncludes: CaseInsensitive
+BreakStringLiterals: false
+ReflowComments: true
