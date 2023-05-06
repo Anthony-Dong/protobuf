@@ -66,6 +66,7 @@ void test_error() {
 
 std::ostream& operator<<(std::ostream& o, ParserErrorMessage_t& err) {
     std::cout << "line: " << err.line << ", column: " << err.line << ", message: " << err.message << std::endl;
+    return o;
 }
 
 extern "C" {
