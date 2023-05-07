@@ -78,16 +78,3 @@ hello world
 		})
 	}
 }
-
-func Benchmark_ParsePBFileDesc(b *testing.B) {
-	_ = loadIdl(b)
-	for i := 0; i < b.N; i++ {
-		rr, err := ParsePBFileDesc(loadIdl(b), WithRequireSyntaxIdentifier())
-		if err != nil {
-			b.Fatal(err)
-		}
-		if rr == nil {
-			b.Fatal("must error")
-		}
-	}
-}

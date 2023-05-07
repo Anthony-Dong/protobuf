@@ -13,5 +13,7 @@ test: ## go tool cover -html=coverage.out
 	go run internal/example/main.go > /dev/null 2>&1 || exit 1
 
 benchmark: export CGO_ENABLED=1
-benchmark:
+benchmark: ## -gcflags="-N -l -m"
+	@go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
+	cd internal/benchmark && \
 	go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .

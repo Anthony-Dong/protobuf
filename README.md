@@ -63,33 +63,56 @@ message Person {
 
 ## 性能
 
-测试文件: [api.proto](internal/test/api.proto)
+压测文件: [api.proto](internal/test/api.proto)
+
+1. 解析PB性能 [cgo_test.go](./cgo_test.go)
 
 ```shell
-➜  protobuf  make benchmark
 go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
 goos: linux
 goarch: amd64
 pkg: github.com/anthony-dong/protobuf
 cpu: Intel(R) Xeon(R) Platinum 8260 CPU @ 2.40GHz
 Benchmark_cgo_parse_pb_pb
-Benchmark_cgo_parse_pb_pb-8     	   27422	     42602 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   26983	     42218 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   26937	     41811 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   27123	     45669 ns/op	    1432 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   28070	     42603 ns/op	    1432 B/op	       3 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   25767	     42901 ns/op	    1424 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   27571	     41677 ns/op	    1424 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   28008	     43252 ns/op	    1424 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   28279	     42257 ns/op	    1424 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   27609	     46022 ns/op	    1424 B/op	       2 allocs/op
 Benchmark_cgo_parse_pb_json
-Benchmark_cgo_parse_pb_json-8   	    6283	    177094 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6192	    174320 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6333	    172869 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6664	    176348 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6202	    175211 ns/op	    4120 B/op	       3 allocs/op
-Benchmark_ParsePBFileDesc
-Benchmark_ParsePBFileDesc-8     	   12792	     91897 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   12818	     93395 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   13386	     93950 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   12522	     97397 ns/op	   22120 B/op	     549 allocs/op
-Benchmark_ParsePBFileDesc-8     	   13010	     97078 ns/op	   22120 B/op	     549 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    5910	    178439 ns/op	    4112 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6274	    177877 ns/op	    4112 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6618	    175789 ns/op	    4112 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    5842	    185348 ns/op	    4112 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    6403	    174213 ns/op	    4112 B/op	       2 allocs/op
 PASS
-ok  	github.com/anthony-dong/protobuf	24.611s
+ok  	github.com/anthony-dong/protobuf	13.813s
 ```
+
+2. 对比 [github.com/jhump/protoreflect@v1.8.2](https://github.com/jhump/protoreflect/tree/v1.8.2 ) 解析库  [benchmark_test.go](internal/benchmark/benchmark_test.go)
+
+> 原因是我司用的是 v1.8.2 版本, 高版本兼容性检测会高一些!
+
+```shell
+go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
+goos: linux
+goarch: amd64
+pkg: github.com/anthony-dong/protobuf/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8260 CPU @ 2.40GHz
+Benchmark_ParsePBFileDesc_Cgo
+Benchmark_ParsePBFileDesc_Cgo-8     	   12895	     97235 ns/op	   22120 B/op	     548 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8     	   12114	     94504 ns/op	   22120 B/op	     548 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8     	   12573	     98407 ns/op	   22120 B/op	     548 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8     	   12562	     97684 ns/op	   22120 B/op	     548 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8     	   11883	     97633 ns/op	   22120 B/op	     548 allocs/op
+Benchmark_ParsePBFileDesc_Jhump
+Benchmark_ParsePBFileDesc_Jhump-8   	    4986	    243932 ns/op	  102432 B/op	    1580 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8   	    4754	    238628 ns/op	  102428 B/op	    1580 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8   	    5204	    240454 ns/op	  102424 B/op	    1580 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8   	    5052	    239961 ns/op	  102423 B/op	    1580 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8   	    4473	    247136 ns/op	  102431 B/op	    1580 allocs/op
+PASS
+ok  	github.com/anthony-dong/protobuf/internal/benchmark	16.892s
+```
+
+备注: 差异的主要原因在于 C++ 的内存分配性能要优于Go，对于Parser这种内存开销较大的业务逻辑，其次官方的 [protobuf](https://github.com/protocolbuffers/protobuf/tree/v3.19.0) 解析库确实很优秀！

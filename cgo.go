@@ -23,6 +23,10 @@ const char* ParserResult_errors_message(ParserResult_t* r, int index) {
 int ParserResult_errors_message_size(ParserResult_t* r, int index){
     return r->errors[index].message_size;
 }
+
+ParserOption_t* new_ParserOption() {
+    return (ParserOption_t*)malloc(sizeof(ParserOption_t));
+}
 */
 import "C"
 
@@ -35,12 +39,13 @@ func cgo_parse_pb(file []byte, ops ...OptionFunc) ([]byte, error) {
 		return nil, ErrorMessages{{Message: `invalid proto file`}}
 	}
 	gooption := loadOptions(ops...)
-
-	option := C.struct_ParserOption{}
+	option := C.new_ParserOption() // GO用指针会逃逸到堆上，所以直接malloc堆即可
 	option.message_type = C.int(int(gooption.MessageType))
 	option.require_syntax_identifier = C.int(bool2int(gooption.RequireSyntaxIdentifier))
-
-	result := C.ParserPBFile((*C.char)(unsafe.Pointer(&file[0])), C.int(len(file)), &option)
+	defer func() {
+		C.free(unsafe.Pointer(option))
+	}()
+	result := C.ParserPBFile((*C.char)(unsafe.Pointer(&file[0])), C.int(len(file)), option)
 	defer func() {
 		C.DeleteParserResult(result)
 	}()
@@ -59,5 +64,6 @@ func cgo_parse_pb(file []byte, ops ...OptionFunc) ([]byte, error) {
 	}
 	// copy. 方便直接回收C的内存
 	data := C.GoStringN(result.desc, result.desc_size)
+	// 由于是拷贝的内存，这里直接unsafe操作即可
 	return UnsafeBytes(data), nil
 }
