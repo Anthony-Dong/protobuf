@@ -115,4 +115,4 @@ PASS
 ok  	github.com/anthony-dong/protobuf/internal/benchmark	16.892s
 ```
 
-备注: 差异的主要原因在于 C++ 的内存分配性能要优于Go，对于Parser这种内存开销较大的业务逻辑，其次官方的 [protobuf](https://github.com/protocolbuffers/protobuf/tree/v3.19.0) 解析库确实很优秀！
+备注: 差异的主要原因在于 C++ 的内存分配性能要优于Go，对于Parser这种内存开销较大的业务逻辑，所以差异比较明显，其次官方的 [protobuf](https://github.com/protocolbuffers/protobuf/tree/v3.19.0) 解析库确实很优秀！
