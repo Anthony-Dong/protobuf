@@ -116,3 +116,9 @@ ok  	github.com/anthony-dong/protobuf/internal/benchmark	16.892s
 ```
 
 备注: 差异的主要原因在于 C++ 的内存分配性能要优于Go，对于Parser这种内存开销较大的业务逻辑，所以差异比较明显，其次官方的 [protobuf](https://github.com/protocolbuffers/protobuf/tree/v3.19.0) 解析库确实很优秀！
+
+
+## Todo
+
+- Go的Protobuf序列化库实际上是用的反射去实现的，可以通过代码生成工具实现硬编码解析，性能会再提高很多！
+- 支持多文件解析，这个我打算用CGO实现，参考protoc造轮子即可！
