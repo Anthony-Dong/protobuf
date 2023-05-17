@@ -9,7 +9,6 @@ clean:
 
 test: export CGO_ENABLED=1
 test: ## go tool cover -html=coverage.out
-	rm -rf internal/test/pb_gen
 	go test -coverprofile=coverage.out -count=1 ./...
 	cd internal/benchmark && go test -count=1 ./...
 	go run internal/example/main.go > /dev/null 2>&1 || exit 1
