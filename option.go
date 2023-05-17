@@ -12,9 +12,12 @@ const (
 type Option struct {
 	MessageType             MessageType
 	RequireSyntaxIdentifier bool
+	WithSourceCodeInfo      bool
+	WithJsonTag             bool
+	WithGoogleProtobuf      bool
 }
 
-func loadOptions(ops ...OptionFunc) *Option {
+func LoadOptions(ops ...OptionFunc) *Option {
 	rr := new(Option)
 	for _, elem := range ops {
 		elem(rr)
@@ -28,8 +31,32 @@ func WithRequireSyntaxIdentifier() OptionFunc {
 	}
 }
 
+func WithSourceCodeInfo() OptionFunc {
+	return func(option *Option) {
+		option.WithSourceCodeInfo = true
+	}
+}
+
+func WithJsonTag() OptionFunc {
+	return func(option *Option) {
+		option.WithJsonTag = true
+	}
+}
+
 func WithMessageType(t MessageType) OptionFunc {
 	return func(option *Option) {
 		option.MessageType = t
 	}
+}
+
+func WithGoogleProtobuf() OptionFunc {
+	return func(option *Option) {
+		option.WithGoogleProtobuf = true
+	}
+}
+
+type IDLConfig struct {
+	Main        string
+	IDLs        map[string][]byte
+	IncludePath []string
 }

@@ -6,12 +6,21 @@ import (
 )
 
 func ParsePBFileDesc(file []byte, ops ...OptionFunc) (*descriptor.FileDescriptorProto, error) {
-	pbBinary, err := cgo_parse_pb(file, append(ops, WithMessageType(MessageType_PB))...)
+	rr := new(descriptor.FileDescriptorProto)
+	err := cgo_parse_pb(file, LoadOptions(append(ops, WithMessageType(MessageType_PB))...), func(desc []byte) error {
+		return proto.Unmarshal(desc, rr)
+	})
 	if err != nil {
 		return nil, err
 	}
-	rr := new(descriptor.FileDescriptorProto)
-	if err := proto.Unmarshal(pbBinary, rr); err != nil {
+	return rr, nil
+}
+
+func ParsePBMultiFileDesc(idl *IDLConfig, ops ...OptionFunc) (*descriptor.FileDescriptorSet, error) {
+	rr := new(descriptor.FileDescriptorSet)
+	if err := cgo_parse_multi_pb(idl, LoadOptions(append(ops, WithMessageType(MessageType_PB))...), func(desc []byte) error {
+		return proto.Unmarshal(desc, rr)
+	}); err != nil {
 		return nil, err
 	}
 	return rr, nil

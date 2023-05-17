@@ -15,5 +15,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC lib_parser)
 
 ## c
 add_executable(cgo_c_demo main.c)
-target_include_directories(cgo_c_demo PRIVATE ${PROTOBUF_DIR})
-target_link_libraries(cgo_c_demo PUBLIC lib_parser)
+#target_include_directories(cgo_c_demo PRIVATE ${PROTOBUF_DIR})
+#target_link_libraries(cgo_c_demo PUBLIC lib_parser)

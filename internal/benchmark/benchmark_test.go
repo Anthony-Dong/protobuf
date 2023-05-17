@@ -63,12 +63,33 @@ func ParsePBFileDescJhump(idls map[string]string, main string) (*descriptor.File
 	return nil, errors.New("no file desc")
 }
 
+func TestParsePBFileDesc(t *testing.T) {
+	mainIdl := string(loadIdl(t))
+	mainIdlName := "main.proto"
+	idlMap := map[string]string{mainIdlName: mainIdl}
+	t.Run("jhump", func(t *testing.T) {
+		result, err := ParsePBFileDescJhump(idlMap, mainIdlName)
+		if err != nil {
+			t.Fatal(err)
+		}
+		t.Log(protobuf.MessageToJson(result, true))
+	})
+
+	t.Run("cgo", func(t *testing.T) {
+		result, err := protobuf.ParsePBFileDesc(loadIdl(t), protobuf.WithRequireSyntaxIdentifier())
+		if err != nil {
+			t.Fatal(err)
+		}
+		t.Log(protobuf.MessageToJson(result, true))
+	})
+}
+
 var initOnce sync.Once
 var idl []byte
 
 func loadIdl(t testing.TB) []byte {
 	initOnce.Do(func() {
-		file, err := ioutil.ReadFile("../test/api.proto")
+		file, err := ioutil.ReadFile("../idl/test.proto")
 		if err != nil {
 			t.Fatal(err)
 		}

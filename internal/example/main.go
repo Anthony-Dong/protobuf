@@ -1,35 +1,29 @@
 package main
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/anthony-dong/protobuf"
 )
 
 func main() {
-	file := []byte(`
-syntax = "proto2";
-package idl.model;
-message Person {
-  optional string name = 1;
-  optional int32 id = 2;
-  optional string email = 3;
-  enum PhoneType {
-    MOBILE = 0;
-    HOME = 1;
-  }
-  message PhoneNumber {
-    optional string number = 1;
-    optional PhoneType type = 2 [default = HOME];
-  }
-  repeated PhoneNumber phones = 4;
-  map<string, Person> map_person = 5;
-  optional bool status = 6;
-}
-`)
-	desc, err := protobuf.ParsePBFileDesc(file, protobuf.WithRequireSyntaxIdentifier())
+	tree, err := protobuf.NewProtobufDiskSourceTree("internal/idl")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
-	log.Println(protobuf.MessageToJson(desc))
+	idlConfig := new(protobuf.IDLConfig)
+	idlConfig.IDLs = tree
+	idlConfig.Main = "service/im.proto"
+	idlConfig.IncludePath = []string{"desc", "."}
+
+	desc, err := protobuf.ParsePBMultiFileDesc(idlConfig,
+		protobuf.WithJsonTag(),
+		protobuf.WithSourceCodeInfo(),
+		protobuf.WithGoogleProtobuf(),
+		protobuf.WithRequireSyntaxIdentifier(),
+	)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(protobuf.MessageToJson(desc, true))
 }
