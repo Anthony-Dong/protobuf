@@ -1,6 +1,8 @@
 syntax = "proto2";
 
-package idl.model;
+package test;
+
+option go_package = "github.com/anthony-dong/protobuf/internal/pb_gen/internal/test";
 
 message Person {
   optional string name = 1;

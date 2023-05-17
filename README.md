@@ -2,13 +2,13 @@
 
 ## 能力
 
-1. 基于libprotoc 解析 proto 文件，解决一些开源的Go的Protobuf解析库和官方的库不一致的问题！
+1. 基于 libprotobuf 3.19.0 解析 proto 文件，解决一些开源的Go的Protobuf解析库和官方的库不一致的问题！
 
 2. 支持的环境
 - Darwin amd64
 - Linux amd64
 
-> 有其他环境需求可自行提交 MR，只要本地跑通测试即可！
+> 有其他环境需求可自行提交 MR，只要本地跑通单元测试即可！
 
 
 ## 使用
@@ -25,37 +25,31 @@ CGO_ENABLED=1 go get -v github.com/anthony-dong/protobuf
 package main
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/anthony-dong/protobuf"
 )
 
 func main() {
-	file := []byte(`
-syntax = "proto2";
-package idl.model;
-message Person {
-  optional string name = 1;
-  optional int32 id = 2;
-  optional string email = 3;
-  enum PhoneType {
-    MOBILE = 0;
-    HOME = 1;
-  }
-  message PhoneNumber {
-    optional string number = 1;
-    optional PhoneType type = 2 [default = HOME];
-  }
-  repeated PhoneNumber phones = 4;
-  map<string, Person> map_person = 5;
-  optional bool status = 6;
-}
-`)
-	desc, err := protobuf.ParsePBFileDesc(file, protobuf.WithRequireSyntaxIdentifier())
+	tree, err := protobuf.NewProtobufDiskSourceTree("internal/test/idl_example")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
-	log.Println(protobuf.MessageToJson(desc))
+	idlConfig := new(protobuf.IDLConfig)
+	idlConfig.IDLs = tree
+	idlConfig.Main = "service/im.proto"
+	idlConfig.IncludePath = []string{"desc", "."}
+
+	desc, err := protobuf.ParsePBMultiFileDesc(idlConfig,
+		protobuf.WithJsonTag(),
+		protobuf.WithSourceCodeInfo(),
+		protobuf.WithGoogleProtobuf(),
+		protobuf.WithRequireSyntaxIdentifier(),
+	)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(protobuf.MessageToJson(desc, true))
 }
 
 // 运行: CGO_ENABLED=1 go run main.go
@@ -63,9 +57,11 @@ message Person {
 
 ## 性能
 
-压测文件: [api.proto](internal/test/api.proto)
+压测文件
 
-1. 解析PB性能 [cgo_test.go](./cgo_test.go)
+1. 解析PB文件性能
+
+   >  压测文件: [cgo_test.go](./cgo_test.go)
 
 ```shell
 go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
@@ -74,51 +70,71 @@ goarch: amd64
 pkg: github.com/anthony-dong/protobuf
 cpu: Intel(R) Xeon(R) Platinum 8260 CPU @ 2.40GHz
 Benchmark_cgo_parse_pb_pb
-Benchmark_cgo_parse_pb_pb-8     	   25767	     42901 ns/op	    1424 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   27571	     41677 ns/op	    1424 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   28008	     43252 ns/op	    1424 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   28279	     42257 ns/op	    1424 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_pb-8     	   27609	     46022 ns/op	    1424 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   29761	     40551 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   28610	     41515 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   29256	     41575 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   29144	     41192 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_pb-8     	   30019	     40678 ns/op	      16 B/op	       1 allocs/op
 Benchmark_cgo_parse_pb_json
-Benchmark_cgo_parse_pb_json-8   	    5910	    178439 ns/op	    4112 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6274	    177877 ns/op	    4112 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6618	    175789 ns/op	    4112 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    5842	    185348 ns/op	    4112 B/op	       2 allocs/op
-Benchmark_cgo_parse_pb_json-8   	    6403	    174213 ns/op	    4112 B/op	       2 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    9913	    114188 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    9848	    114095 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    9326	    115046 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_json-8   	   10000	    116789 ns/op	      16 B/op	       1 allocs/op
+Benchmark_cgo_parse_pb_json-8   	    9115	    117856 ns/op	      16 B/op	       1 allocs/op
 PASS
-ok  	github.com/anthony-dong/protobuf	13.813s
+ok  	github.com/anthony-dong/protobuf	13.772s
 ```
 
-2. 对比 [github.com/jhump/protoreflect@v1.8.2](https://github.com/jhump/protoreflect/tree/v1.8.2 ) 解析库  [benchmark_test.go](internal/benchmark/benchmark_test.go)
+2. 对比 [github.com/jhump/protoreflect@v1.8.2](https://github.com/jhump/protoreflect/tree/v1.8.2 ) 解析库
 
 > 原因是我司用的是 v1.8.2 版本, 高版本兼容性检测会高一些!
+>
+> 压测文件:
+>
+> -  [benchmark_test.go](internal/benchmark/benchmark_test.go) 
+> -  [benchmark_multi_test.go](internal/benchmark/benchmark_multi_test.go)
 
 ```shell
-go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
 goos: linux
 goarch: amd64
 pkg: github.com/anthony-dong/protobuf/internal/benchmark
 cpu: Intel(R) Xeon(R) Platinum 8260 CPU @ 2.40GHz
+Benchmark_ParsePBMultiFileDesc_Cgo
+Benchmark_ParsePBMultiFileDesc_Cgo-8     	     942	   1207139 ns/op	   60937 B/op	    1976 allocs/op
+Benchmark_ParsePBMultiFileDesc_Cgo-8     	     996	   1216023 ns/op	   60939 B/op	    1976 allocs/op
+Benchmark_ParsePBMultiFileDesc_Cgo-8     	     958	   1223891 ns/op	   60936 B/op	    1976 allocs/op
+Benchmark_ParsePBMultiFileDesc_Cgo-8     	     962	   1245004 ns/op	   60936 B/op	    1976 allocs/op
+Benchmark_ParsePBMultiFileDesc_Cgo-8     	     986	   1225556 ns/op	   60936 B/op	    1976 allocs/op
+Benchmark_ParsePBMultiFileDesc_Jhump
+Benchmark_ParsePBMultiFileDesc_Jhump-8   	     508	   2404250 ns/op	  762870 B/op	   11038 allocs/op
+Benchmark_ParsePBMultiFileDesc_Jhump-8   	     468	   2414933 ns/op	  762874 B/op	   11038 allocs/op
+Benchmark_ParsePBMultiFileDesc_Jhump-8   	     494	   2404417 ns/op	  762828 B/op	   11038 allocs/op
+Benchmark_ParsePBMultiFileDesc_Jhump-8   	     498	   2343901 ns/op	  762930 B/op	   11038 allocs/op
+Benchmark_ParsePBMultiFileDesc_Jhump-8   	     494	   2412528 ns/op	  762977 B/op	   11038 allocs/op
 Benchmark_ParsePBFileDesc_Cgo
-Benchmark_ParsePBFileDesc_Cgo-8     	   12895	     97235 ns/op	   22120 B/op	     548 allocs/op
-Benchmark_ParsePBFileDesc_Cgo-8     	   12114	     94504 ns/op	   22120 B/op	     548 allocs/op
-Benchmark_ParsePBFileDesc_Cgo-8     	   12573	     98407 ns/op	   22120 B/op	     548 allocs/op
-Benchmark_ParsePBFileDesc_Cgo-8     	   12562	     97684 ns/op	   22120 B/op	     548 allocs/op
-Benchmark_ParsePBFileDesc_Cgo-8     	   11883	     97633 ns/op	   22120 B/op	     548 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8          	   22116	     54090 ns/op	    5024 B/op	     145 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8          	   22134	     54031 ns/op	    5024 B/op	     145 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8          	   21500	     56155 ns/op	    5024 B/op	     145 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8          	   20539	     57158 ns/op	    5024 B/op	     145 allocs/op
+Benchmark_ParsePBFileDesc_Cgo-8          	   21400	     55135 ns/op	    5024 B/op	     145 allocs/op
 Benchmark_ParsePBFileDesc_Jhump
-Benchmark_ParsePBFileDesc_Jhump-8   	    4986	    243932 ns/op	  102432 B/op	    1580 allocs/op
-Benchmark_ParsePBFileDesc_Jhump-8   	    4754	    238628 ns/op	  102428 B/op	    1580 allocs/op
-Benchmark_ParsePBFileDesc_Jhump-8   	    5204	    240454 ns/op	  102424 B/op	    1580 allocs/op
-Benchmark_ParsePBFileDesc_Jhump-8   	    5052	    239961 ns/op	  102423 B/op	    1580 allocs/op
-Benchmark_ParsePBFileDesc_Jhump-8   	    4473	    247136 ns/op	  102431 B/op	    1580 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8        	    3837	    307914 ns/op	  107032 B/op	    1735 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8        	    3874	    311001 ns/op	  107036 B/op	    1735 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8        	    3578	    319180 ns/op	  107037 B/op	    1735 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8        	    3895	    308775 ns/op	  107035 B/op	    1735 allocs/op
+Benchmark_ParsePBFileDesc_Jhump-8        	    3873	    313726 ns/op	  107033 B/op	    1735 allocs/op
 PASS
-ok  	github.com/anthony-dong/protobuf/internal/benchmark	16.892s
+ok  	github.com/anthony-dong/protobuf/internal/benchmark	28.682s
 ```
 
-备注: 差异的主要原因在于 C++ 的内存分配性能要优于Go，对于Parser这种内存开销较大的业务逻辑，所以差异比较明显，其次官方的 [protobuf](https://github.com/protocolbuffers/protobuf/tree/v3.19.0) 解析库确实很优秀！
+3. 结论：
+
+- 解析单文件实际上由于C++极致的性能，也就是说冗余了一次序列化+反序列化，性能也能是5-6倍！
+- 解析多文件由于大量的时间浪费在序列化和反序列化上，导致性能裂化较为严重，性能只能到2倍左右！
+- 其次就是内存压力的大大降低！
 
 
 ## Todo
 
-- Go的Protobuf序列化库实际上是用的反射去实现的，可以通过代码生成工具实现硬编码解析，性能会再提高很多！
-- 支持多文件解析，这个我打算用CGO实现，参考protoc造轮子即可！
+- Go 官方的 Protobuf 序列化库实际上是用的反射去实现的，可以通过代码生成工具实现硬编码解析，性能会再提高很多！
+- 寻找更多的突破口，降低序列化和反序列化的开销，例如直接做C++ -> Go的数据绑定！

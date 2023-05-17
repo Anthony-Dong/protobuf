@@ -6,12 +6,12 @@ message(CMAKE_SYSTEM: ${CMAKE_SYSTEM})
 
 project(lib_parser)
 
-add_library(${PROJECT_NAME} SHARED pb_parser.cpp pb_parser.h cgo.h)
+add_library(${PROJECT_NAME} SHARED pb_parser.cpp pb_parser.h cgo.h pb_include.h)
 
 set(protobuf_link_directory ${CMAKE_CURRENT_SOURCE_DIR}/deps/darwin_x86_64)
-if(${CMAKE_SYSTEM} MATCHES "Linux")
+if (${CMAKE_SYSTEM} MATCHES "Linux")
     set(protobuf_link_directory ${CMAKE_CURRENT_SOURCE_DIR}/deps/linux_x86_64)
-endif()
+endif ()
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/deps/include)
 if (${CMAKE_VERSION} VERSION_LESS 3.13)

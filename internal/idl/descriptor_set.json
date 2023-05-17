@@ -1,0 +1,4237 @@
+{
+  "file": [
+    {
+      "name": "service/im.proto",
+      "package": "im.service",
+      "dependency": [
+        "data/im.proto",
+        "api.proto"
+      ],
+      "service": [
+        {
+          "name": "ImService",
+          "method": [
+            {
+              "name": "GetMessage",
+              "inputType": ".im.data.ImMessageRequest",
+              "outputType": ".im.data.ImMessageResponse",
+              "options": {}
+            }
+          ]
+        }
+      ],
+      "options": {
+        "goPackage": "github.com/anthony-dong/protobuf/internal/pb_gen/service"
+      },
+      "sourceCodeInfo": {
+        "location": [
+          {
+            "span": [
+              0,
+              0,
+              17,
+              1
+            ]
+          },
+          {
+            "path": [
+              12
+            ],
+            "span": [
+              0,
+              0,
+              18
+            ]
+          },
+          {
+            "path": [
+              2
+            ],
+            "span": [
+              2,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              3,
+              0
+            ],
+            "span": [
+              4,
+              0,
+              23
+            ]
+          },
+          {
+            "path": [
+              3,
+              1
+            ],
+            "span": [
+              5,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              7,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              8,
+              11
+            ],
+            "span": [
+              7,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              10,
+              0,
+              73
+            ]
+          },
+          {
+            "path": [
+              8,
+              1001
+            ],
+            "span": [
+              10,
+              0,
+              73
+            ],
+            "leadingComments": " 自定义 安卓package!\n"
+          },
+          {
+            "path": [
+              6,
+              0
+            ],
+            "span": [
+              12,
+              0,
+              17,
+              1
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              1
+            ],
+            "span": [
+              12,
+              8,
+              17
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0
+            ],
+            "span": [
+              13,
+              2,
+              16,
+              3
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              13,
+              6,
+              16
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              2
+            ],
+            "span": [
+              13,
+              18,
+              42
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              13,
+              53,
+              78
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              14,
+              4,
+              30
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              4,
+              50201
+            ],
+            "span": [
+              14,
+              4,
+              30
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              15,
+              4,
+              43
+            ]
+          },
+          {
+            "path": [
+              6,
+              0,
+              2,
+              0,
+              4,
+              50202
+            ],
+            "span": [
+              15,
+              4,
+              43
+            ]
+          }
+        ]
+      },
+      "syntax": "proto2"
+    },
+    {
+      "name": "data/im.proto",
+      "package": "im.data",
+      "dependency": [
+        "commons/im.proto",
+        "api.proto"
+      ],
+      "messageType": [
+        {
+          "name": "ImMessageRequest",
+          "field": [
+            {
+              "name": "Cursor",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT64",
+              "defaultValue": "2",
+              "jsonName": "Cursor",
+              "options": {}
+            },
+            {
+              "name": "ImCommons",
+              "number": 255,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".im.commons.ImCommons",
+              "jsonName": "ImCommons",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "ImMessageResponse",
+          "field": [
+            {
+              "name": "Cursor",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT64",
+              "jsonName": "Cursor"
+            },
+            {
+              "name": "Messages",
+              "number": 2,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".im.data.ImMessage",
+              "jsonName": "Messages"
+            }
+          ]
+        },
+        {
+          "name": "ImMessage",
+          "field": [
+            {
+              "name": "Id",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT64",
+              "jsonName": "Id"
+            },
+            {
+              "name": "Content",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "Content"
+            }
+          ]
+        }
+      ],
+      "options": {
+        "goPackage": "github.com/anthony-dong/protobuf/internal/pb_gen/data"
+      },
+      "sourceCodeInfo": {
+        "location": [
+          {
+            "span": [
+              0,
+              0,
+              22,
+              1
+            ]
+          },
+          {
+            "path": [
+              12
+            ],
+            "span": [
+              0,
+              0,
+              18
+            ]
+          },
+          {
+            "path": [
+              2
+            ],
+            "span": [
+              2,
+              0,
+              16
+            ]
+          },
+          {
+            "path": [
+              3,
+              0
+            ],
+            "span": [
+              4,
+              0,
+              26
+            ]
+          },
+          {
+            "path": [
+              3,
+              1
+            ],
+            "span": [
+              5,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              7,
+              0,
+              76
+            ]
+          },
+          {
+            "path": [
+              8,
+              11
+            ],
+            "span": [
+              7,
+              0,
+              76
+            ]
+          },
+          {
+            "path": [
+              4,
+              0
+            ],
+            "span": [
+              9,
+              0,
+              12,
+              1
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              1
+            ],
+            "span": [
+              9,
+              8,
+              24
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0
+            ],
+            "span": [
+              10,
+              2,
+              86
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              10,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              5
+            ],
+            "span": [
+              10,
+              11,
+              16
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              10,
+              17,
+              23
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              10,
+              26,
+              27
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8
+            ],
+            "span": [
+              10,
+              28,
+              85
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              7
+            ],
+            "span": [
+              10,
+              39,
+              40
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8,
+              50101
+            ],
+            "span": [
+              10,
+              42,
+              62
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8,
+              50102
+            ],
+            "span": [
+              10,
+              64,
+              84
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1
+            ],
+            "span": [
+              11,
+              2,
+              69
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              4
+            ],
+            "span": [
+              11,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              6
+            ],
+            "span": [
+              11,
+              11,
+              31
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              11,
+              32,
+              41
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              3
+            ],
+            "span": [
+              11,
+              44,
+              47
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8
+            ],
+            "span": [
+              11,
+              48,
+              68
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8,
+              50103
+            ],
+            "span": [
+              11,
+              49,
+              67
+            ]
+          },
+          {
+            "path": [
+              4,
+              1
+            ],
+            "span": [
+              14,
+              0,
+              17,
+              1
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              1
+            ],
+            "span": [
+              14,
+              8,
+              25
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              0
+            ],
+            "span": [
+              15,
+              2,
+              28
+            ],
+            "trailingComments": " 偏移量\n"
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              15,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              0,
+              5
+            ],
+            "span": [
+              15,
+              11,
+              16
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              15,
+              17,
+              23
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              15,
+              26,
+              27
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              1
+            ],
+            "span": [
+              16,
+              2,
+              34
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              1,
+              4
+            ],
+            "span": [
+              16,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              1,
+              6
+            ],
+            "span": [
+              16,
+              11,
+              20
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              16,
+              21,
+              29
+            ]
+          },
+          {
+            "path": [
+              4,
+              1,
+              2,
+              1,
+              3
+            ],
+            "span": [
+              16,
+              32,
+              33
+            ]
+          },
+          {
+            "path": [
+              4,
+              2
+            ],
+            "span": [
+              19,
+              0,
+              22,
+              1
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              1
+            ],
+            "span": [
+              19,
+              8,
+              17
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              0
+            ],
+            "span": [
+              20,
+              2,
+              24
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              20,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              0,
+              5
+            ],
+            "span": [
+              20,
+              11,
+              16
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              20,
+              17,
+              19
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              20,
+              22,
+              23
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              1
+            ],
+            "span": [
+              21,
+              2,
+              30
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              1,
+              4
+            ],
+            "span": [
+              21,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              1,
+              5
+            ],
+            "span": [
+              21,
+              11,
+              17
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              21,
+              18,
+              25
+            ]
+          },
+          {
+            "path": [
+              4,
+              2,
+              2,
+              1,
+              3
+            ],
+            "span": [
+              21,
+              28,
+              29
+            ]
+          }
+        ]
+      },
+      "syntax": "proto2"
+    },
+    {
+      "name": "commons/im.proto",
+      "package": "im.commons",
+      "dependency": [
+        "commons/device.proto",
+        "commons/user.proto",
+        "api.proto"
+      ],
+      "messageType": [
+        {
+          "name": "ImCommons",
+          "field": [
+            {
+              "name": "UserInfo",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".im.commons.UserInfo",
+              "jsonName": "UserInfo",
+              "options": {}
+            },
+            {
+              "name": "DeviceInfo",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".im.commons.DeviceInfo",
+              "jsonName": "DeviceInfo",
+              "options": {}
+            }
+          ]
+        }
+      ],
+      "options": {
+        "goPackage": "github.com/anthony-dong/protobuf/internal/pb_gen/commons"
+      },
+      "sourceCodeInfo": {
+        "location": [
+          {
+            "span": [
+              0,
+              0,
+              13,
+              1
+            ]
+          },
+          {
+            "path": [
+              12
+            ],
+            "span": [
+              0,
+              0,
+              18
+            ]
+          },
+          {
+            "path": [
+              2
+            ],
+            "span": [
+              1,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              3,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              8,
+              11
+            ],
+            "span": [
+              3,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              3,
+              0
+            ],
+            "span": [
+              5,
+              0,
+              30
+            ]
+          },
+          {
+            "path": [
+              3,
+              1
+            ],
+            "span": [
+              6,
+              0,
+              28
+            ]
+          },
+          {
+            "path": [
+              3,
+              2
+            ],
+            "span": [
+              8,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              4,
+              0
+            ],
+            "span": [
+              10,
+              0,
+              13,
+              1
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              1
+            ],
+            "span": [
+              10,
+              8,
+              17
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0
+            ],
+            "span": [
+              11,
+              2,
+              65
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              11,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              6
+            ],
+            "span": [
+              11,
+              11,
+              30
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              11,
+              31,
+              39
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              11,
+              42,
+              43
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8
+            ],
+            "span": [
+              11,
+              44,
+              64
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8,
+              50103
+            ],
+            "span": [
+              11,
+              45,
+              63
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1
+            ],
+            "span": [
+              12,
+              2,
+              69
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              4
+            ],
+            "span": [
+              12,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              6
+            ],
+            "span": [
+              12,
+              11,
+              32
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              12,
+              33,
+              43
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              3
+            ],
+            "span": [
+              12,
+              46,
+              47
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8
+            ],
+            "span": [
+              12,
+              48,
+              68
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8,
+              50103
+            ],
+            "span": [
+              12,
+              49,
+              67
+            ]
+          }
+        ]
+      },
+      "syntax": "proto2"
+    },
+    {
+      "name": "commons/device.proto",
+      "package": "im.commons",
+      "messageType": [
+        {
+          "name": "DeviceInfo",
+          "field": [
+            {
+              "name": "Id",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT64",
+              "oneofIndex": 0,
+              "jsonName": "Id",
+              "proto3Optional": true
+            },
+            {
+              "name": "Name",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "oneofIndex": 1,
+              "jsonName": "Name",
+              "proto3Optional": true
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "_Id"
+            },
+            {
+              "name": "_Name"
+            }
+          ]
+        }
+      ],
+      "options": {
+        "goPackage": "github.com/anthony-dong/protobuf/internal/pb_gen/commons"
+      },
+      "sourceCodeInfo": {
+        "location": [
+          {
+            "span": [
+              0,
+              0,
+              8,
+              1
+            ]
+          },
+          {
+            "path": [
+              12
+            ],
+            "span": [
+              0,
+              0,
+              18
+            ]
+          },
+          {
+            "path": [
+              2
+            ],
+            "span": [
+              1,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              3,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              8,
+              11
+            ],
+            "span": [
+              3,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              4,
+              0
+            ],
+            "span": [
+              5,
+              0,
+              8,
+              1
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              1
+            ],
+            "span": [
+              5,
+              8,
+              18
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0
+            ],
+            "span": [
+              6,
+              3,
+              25
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              6,
+              3,
+              11
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              5
+            ],
+            "span": [
+              6,
+              12,
+              17
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              6,
+              18,
+              20
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              6,
+              23,
+              24
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1
+            ],
+            "span": [
+              7,
+              3,
+              28
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              4
+            ],
+            "span": [
+              7,
+              3,
+              11
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              5
+            ],
+            "span": [
+              7,
+              12,
+              18
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              7,
+              19,
+              23
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              3
+            ],
+            "span": [
+              7,
+              26,
+              27
+            ]
+          }
+        ]
+      },
+      "syntax": "proto3"
+    },
+    {
+      "name": "commons/user.proto",
+      "package": "im.commons",
+      "dependency": [
+        "api.proto"
+      ],
+      "messageType": [
+        {
+          "name": "UserInfo",
+          "field": [
+            {
+              "name": "Id",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT64",
+              "jsonName": "Id",
+              "options": {}
+            },
+            {
+              "name": "Name",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "Name",
+              "options": {}
+            }
+          ]
+        }
+      ],
+      "options": {
+        "goPackage": "github.com/anthony-dong/protobuf/internal/pb_gen/commons"
+      },
+      "sourceCodeInfo": {
+        "location": [
+          {
+            "span": [
+              0,
+              0,
+              9,
+              1
+            ]
+          },
+          {
+            "path": [
+              12
+            ],
+            "span": [
+              0,
+              0,
+              18
+            ]
+          },
+          {
+            "path": [
+              2
+            ],
+            "span": [
+              1,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              2,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              8,
+              11
+            ],
+            "span": [
+              2,
+              0,
+              79
+            ]
+          },
+          {
+            "path": [
+              3,
+              0
+            ],
+            "span": [
+              4,
+              0,
+              19
+            ]
+          },
+          {
+            "path": [
+              4,
+              0
+            ],
+            "span": [
+              6,
+              0,
+              9,
+              1
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              1
+            ],
+            "span": [
+              6,
+              8,
+              16
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0
+            ],
+            "span": [
+              7,
+              2,
+              76
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              4
+            ],
+            "span": [
+              7,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              5
+            ],
+            "span": [
+              7,
+              11,
+              16
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              7,
+              17,
+              19
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              3
+            ],
+            "span": [
+              7,
+              22,
+              23
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8
+            ],
+            "span": [
+              7,
+              24,
+              75
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8,
+              50101
+            ],
+            "span": [
+              7,
+              25,
+              46
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              0,
+              8,
+              50102
+            ],
+            "span": [
+              7,
+              48,
+              74
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1
+            ],
+            "span": [
+              8,
+              2,
+              81
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              4
+            ],
+            "span": [
+              8,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              5
+            ],
+            "span": [
+              8,
+              11,
+              17
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              8,
+              18,
+              22
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              3
+            ],
+            "span": [
+              8,
+              25,
+              26
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8
+            ],
+            "span": [
+              8,
+              27,
+              80
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8,
+              50101
+            ],
+            "span": [
+              8,
+              28,
+              49
+            ]
+          },
+          {
+            "path": [
+              4,
+              0,
+              2,
+              1,
+              8,
+              50102
+            ],
+            "span": [
+              8,
+              51,
+              79
+            ]
+          }
+        ]
+      },
+      "syntax": "proto2"
+    },
+    {
+      "name": "api.proto",
+      "package": "api",
+      "dependency": [
+        "google/protobuf/descriptor.proto"
+      ],
+      "enumType": [
+        {
+          "name": "HttpSourceType",
+          "value": [
+            {
+              "name": "Query",
+              "number": 1
+            },
+            {
+              "name": "Body",
+              "number": 2
+            },
+            {
+              "name": "Header",
+              "number": 3
+            }
+          ]
+        },
+        {
+          "name": "HttpMethodType",
+          "value": [
+            {
+              "name": "GET",
+              "number": 1
+            },
+            {
+              "name": "POST",
+              "number": 2
+            },
+            {
+              "name": "PUT",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "extension": [
+        {
+          "name": "android_package",
+          "number": 1001,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "extendee": ".google.protobuf.FileOptions",
+          "jsonName": "androidPackage"
+        },
+        {
+          "name": "source",
+          "number": 50101,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_ENUM",
+          "typeName": ".api.HttpSourceType",
+          "extendee": ".google.protobuf.FieldOptions",
+          "jsonName": "source"
+        },
+        {
+          "name": "key",
+          "number": 50102,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "extendee": ".google.protobuf.FieldOptions",
+          "jsonName": "key"
+        },
+        {
+          "name": "unbox",
+          "number": 50103,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_BOOL",
+          "extendee": ".google.protobuf.FieldOptions",
+          "jsonName": "unbox"
+        },
+        {
+          "name": "method",
+          "number": 50201,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_ENUM",
+          "typeName": ".api.HttpMethodType",
+          "extendee": ".google.protobuf.MethodOptions",
+          "jsonName": "method"
+        },
+        {
+          "name": "path",
+          "number": 50202,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "extendee": ".google.protobuf.MethodOptions",
+          "jsonName": "path"
+        }
+      ],
+      "options": {
+        "goPackage": "github.com/anthony-dong/protobuf/internal/pb_gen/api"
+      },
+      "sourceCodeInfo": {
+        "location": [
+          {
+            "span": [
+              0,
+              0,
+              31,
+              1
+            ]
+          },
+          {
+            "path": [
+              12
+            ],
+            "span": [
+              0,
+              0,
+              18
+            ]
+          },
+          {
+            "path": [
+              2
+            ],
+            "span": [
+              1,
+              0,
+              12
+            ]
+          },
+          {
+            "path": [
+              8
+            ],
+            "span": [
+              2,
+              0,
+              75
+            ]
+          },
+          {
+            "path": [
+              8,
+              11
+            ],
+            "span": [
+              2,
+              0,
+              75
+            ]
+          },
+          {
+            "path": [
+              3,
+              0
+            ],
+            "span": [
+              4,
+              0,
+              42
+            ]
+          },
+          {
+            "path": [
+              7
+            ],
+            "span": [
+              6,
+              0,
+              8,
+              1
+            ]
+          },
+          {
+            "path": [
+              7,
+              0
+            ],
+            "span": [
+              7,
+              2,
+              41
+            ]
+          },
+          {
+            "path": [
+              7,
+              0,
+              2
+            ],
+            "span": [
+              6,
+              7,
+              34
+            ]
+          },
+          {
+            "path": [
+              7,
+              0,
+              4
+            ],
+            "span": [
+              7,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              7,
+              0,
+              5
+            ],
+            "span": [
+              7,
+              11,
+              17
+            ]
+          },
+          {
+            "path": [
+              7,
+              0,
+              1
+            ],
+            "span": [
+              7,
+              18,
+              33
+            ]
+          },
+          {
+            "path": [
+              7,
+              0,
+              3
+            ],
+            "span": [
+              7,
+              36,
+              40
+            ]
+          },
+          {
+            "path": [
+              7
+            ],
+            "span": [
+              10,
+              0,
+              14,
+              1
+            ]
+          },
+          {
+            "path": [
+              7,
+              1
+            ],
+            "span": [
+              11,
+              2,
+              41
+            ],
+            "trailingComments": " 来自于http 请求的哪个部位\n"
+          },
+          {
+            "path": [
+              7,
+              1,
+              2
+            ],
+            "span": [
+              10,
+              7,
+              35
+            ]
+          },
+          {
+            "path": [
+              7,
+              1,
+              4
+            ],
+            "span": [
+              11,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              7,
+              1,
+              6
+            ],
+            "span": [
+              11,
+              11,
+              25
+            ]
+          },
+          {
+            "path": [
+              7,
+              1,
+              1
+            ],
+            "span": [
+              11,
+              26,
+              32
+            ]
+          },
+          {
+            "path": [
+              7,
+              1,
+              3
+            ],
+            "span": [
+              11,
+              35,
+              40
+            ]
+          },
+          {
+            "path": [
+              7,
+              2
+            ],
+            "span": [
+              12,
+              2,
+              30
+            ],
+            "trailingComments": " http 请求的header 还是哪\n"
+          },
+          {
+            "path": [
+              7,
+              2,
+              2
+            ],
+            "span": [
+              10,
+              7,
+              35
+            ]
+          },
+          {
+            "path": [
+              7,
+              2,
+              4
+            ],
+            "span": [
+              12,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              7,
+              2,
+              5
+            ],
+            "span": [
+              12,
+              11,
+              17
+            ]
+          },
+          {
+            "path": [
+              7,
+              2,
+              1
+            ],
+            "span": [
+              12,
+              18,
+              21
+            ]
+          },
+          {
+            "path": [
+              7,
+              2,
+              3
+            ],
+            "span": [
+              12,
+              24,
+              29
+            ]
+          },
+          {
+            "path": [
+              7,
+              3
+            ],
+            "span": [
+              13,
+              2,
+              30
+            ],
+            "trailingComments": " 是否平铺开结构体，除body外，默认处理第一层\n"
+          },
+          {
+            "path": [
+              7,
+              3,
+              2
+            ],
+            "span": [
+              10,
+              7,
+              35
+            ]
+          },
+          {
+            "path": [
+              7,
+              3,
+              4
+            ],
+            "span": [
+              13,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              7,
+              3,
+              5
+            ],
+            "span": [
+              13,
+              11,
+              15
+            ]
+          },
+          {
+            "path": [
+              7,
+              3,
+              1
+            ],
+            "span": [
+              13,
+              16,
+              21
+            ]
+          },
+          {
+            "path": [
+              7,
+              3,
+              3
+            ],
+            "span": [
+              13,
+              24,
+              29
+            ]
+          },
+          {
+            "path": [
+              5,
+              0
+            ],
+            "span": [
+              16,
+              0,
+              20,
+              1
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              1
+            ],
+            "span": [
+              16,
+              5,
+              19
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              0
+            ],
+            "span": [
+              17,
+              2,
+              12
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              17,
+              2,
+              7
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              0,
+              2
+            ],
+            "span": [
+              17,
+              10,
+              11
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              1
+            ],
+            "span": [
+              18,
+              2,
+              11
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              18,
+              2,
+              6
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              1,
+              2
+            ],
+            "span": [
+              18,
+              9,
+              10
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              2
+            ],
+            "span": [
+              19,
+              2,
+              13
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              2,
+              1
+            ],
+            "span": [
+              19,
+              2,
+              8
+            ]
+          },
+          {
+            "path": [
+              5,
+              0,
+              2,
+              2,
+              2
+            ],
+            "span": [
+              19,
+              11,
+              12
+            ]
+          },
+          {
+            "path": [
+              7
+            ],
+            "span": [
+              22,
+              0,
+              25,
+              1
+            ]
+          },
+          {
+            "path": [
+              7,
+              4
+            ],
+            "span": [
+              23,
+              2,
+              41
+            ],
+            "trailingComments": " http method\n"
+          },
+          {
+            "path": [
+              7,
+              4,
+              2
+            ],
+            "span": [
+              22,
+              7,
+              36
+            ]
+          },
+          {
+            "path": [
+              7,
+              4,
+              4
+            ],
+            "span": [
+              23,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              7,
+              4,
+              6
+            ],
+            "span": [
+              23,
+              11,
+              25
+            ]
+          },
+          {
+            "path": [
+              7,
+              4,
+              1
+            ],
+            "span": [
+              23,
+              26,
+              32
+            ]
+          },
+          {
+            "path": [
+              7,
+              4,
+              3
+            ],
+            "span": [
+              23,
+              35,
+              40
+            ]
+          },
+          {
+            "path": [
+              7,
+              5
+            ],
+            "span": [
+              24,
+              2,
+              31
+            ],
+            "trailingComments": " http path\n"
+          },
+          {
+            "path": [
+              7,
+              5,
+              2
+            ],
+            "span": [
+              22,
+              7,
+              36
+            ]
+          },
+          {
+            "path": [
+              7,
+              5,
+              4
+            ],
+            "span": [
+              24,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              7,
+              5,
+              5
+            ],
+            "span": [
+              24,
+              11,
+              17
+            ]
+          },
+          {
+            "path": [
+              7,
+              5,
+              1
+            ],
+            "span": [
+              24,
+              18,
+              22
+            ]
+          },
+          {
+            "path": [
+              7,
+              5,
+              3
+            ],
+            "span": [
+              24,
+              25,
+              30
+            ]
+          },
+          {
+            "path": [
+              5,
+              1
+            ],
+            "span": [
+              27,
+              0,
+              31,
+              1
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              1
+            ],
+            "span": [
+              27,
+              5,
+              19
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              0
+            ],
+            "span": [
+              28,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              0,
+              1
+            ],
+            "span": [
+              28,
+              2,
+              5
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              0,
+              2
+            ],
+            "span": [
+              28,
+              8,
+              9
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              1
+            ],
+            "span": [
+              29,
+              2,
+              11
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              1,
+              1
+            ],
+            "span": [
+              29,
+              2,
+              6
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              1,
+              2
+            ],
+            "span": [
+              29,
+              9,
+              10
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              2
+            ],
+            "span": [
+              30,
+              2,
+              10
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              2,
+              1
+            ],
+            "span": [
+              30,
+              2,
+              5
+            ]
+          },
+          {
+            "path": [
+              5,
+              1,
+              2,
+              2,
+              2
+            ],
+            "span": [
+              30,
+              8,
+              9
+            ]
+          }
+        ]
+      },
+      "syntax": "proto2"
+    },
+    {
+      "name": "google/protobuf/descriptor.proto",
+      "package": "google.protobuf",
+      "messageType": [
+        {
+          "name": "FileDescriptorSet",
+          "field": [
+            {
+              "name": "file",
+              "number": 1,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.FileDescriptorProto",
+              "jsonName": "file"
+            }
+          ]
+        },
+        {
+          "name": "FileDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "package",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "package"
+            },
+            {
+              "name": "dependency",
+              "number": 3,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_STRING",
+              "jsonName": "dependency"
+            },
+            {
+              "name": "public_dependency",
+              "number": 10,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_INT32",
+              "jsonName": "publicDependency"
+            },
+            {
+              "name": "weak_dependency",
+              "number": 11,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_INT32",
+              "jsonName": "weakDependency"
+            },
+            {
+              "name": "message_type",
+              "number": 4,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.DescriptorProto",
+              "jsonName": "messageType"
+            },
+            {
+              "name": "enum_type",
+              "number": 5,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.EnumDescriptorProto",
+              "jsonName": "enumType"
+            },
+            {
+              "name": "service",
+              "number": 6,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.ServiceDescriptorProto",
+              "jsonName": "service"
+            },
+            {
+              "name": "extension",
+              "number": 7,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.FieldDescriptorProto",
+              "jsonName": "extension"
+            },
+            {
+              "name": "options",
+              "number": 8,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.FileOptions",
+              "jsonName": "options"
+            },
+            {
+              "name": "source_code_info",
+              "number": 9,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.SourceCodeInfo",
+              "jsonName": "sourceCodeInfo"
+            },
+            {
+              "name": "syntax",
+              "number": 12,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "syntax"
+            }
+          ]
+        },
+        {
+          "name": "DescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "field",
+              "number": 2,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.FieldDescriptorProto",
+              "jsonName": "field"
+            },
+            {
+              "name": "extension",
+              "number": 6,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.FieldDescriptorProto",
+              "jsonName": "extension"
+            },
+            {
+              "name": "nested_type",
+              "number": 3,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.DescriptorProto",
+              "jsonName": "nestedType"
+            },
+            {
+              "name": "enum_type",
+              "number": 4,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.EnumDescriptorProto",
+              "jsonName": "enumType"
+            },
+            {
+              "name": "extension_range",
+              "number": 5,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.DescriptorProto.ExtensionRange",
+              "jsonName": "extensionRange"
+            },
+            {
+              "name": "oneof_decl",
+              "number": 8,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.OneofDescriptorProto",
+              "jsonName": "oneofDecl"
+            },
+            {
+              "name": "options",
+              "number": 7,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.MessageOptions",
+              "jsonName": "options"
+            },
+            {
+              "name": "reserved_range",
+              "number": 9,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.DescriptorProto.ReservedRange",
+              "jsonName": "reservedRange"
+            },
+            {
+              "name": "reserved_name",
+              "number": 10,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_STRING",
+              "jsonName": "reservedName"
+            }
+          ],
+          "nestedType": [
+            {
+              "name": "ExtensionRange",
+              "field": [
+                {
+                  "name": "start",
+                  "number": 1,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "start"
+                },
+                {
+                  "name": "end",
+                  "number": 2,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "end"
+                },
+                {
+                  "name": "options",
+                  "number": 3,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.ExtensionRangeOptions",
+                  "jsonName": "options"
+                }
+              ]
+            },
+            {
+              "name": "ReservedRange",
+              "field": [
+                {
+                  "name": "start",
+                  "number": 1,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "start"
+                },
+                {
+                  "name": "end",
+                  "number": 2,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "end"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ExtensionRangeOptions",
+          "field": [
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ]
+        },
+        {
+          "name": "FieldDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "number",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT32",
+              "jsonName": "number"
+            },
+            {
+              "name": "label",
+              "number": 4,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_ENUM",
+              "typeName": ".google.protobuf.FieldDescriptorProto.Label",
+              "jsonName": "label"
+            },
+            {
+              "name": "type",
+              "number": 5,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_ENUM",
+              "typeName": ".google.protobuf.FieldDescriptorProto.Type",
+              "jsonName": "type"
+            },
+            {
+              "name": "type_name",
+              "number": 6,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "typeName"
+            },
+            {
+              "name": "extendee",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "extendee"
+            },
+            {
+              "name": "default_value",
+              "number": 7,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "defaultValue"
+            },
+            {
+              "name": "oneof_index",
+              "number": 9,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT32",
+              "jsonName": "oneofIndex"
+            },
+            {
+              "name": "json_name",
+              "number": 10,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "jsonName"
+            },
+            {
+              "name": "options",
+              "number": 8,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.FieldOptions",
+              "jsonName": "options"
+            },
+            {
+              "name": "proto3_optional",
+              "number": 17,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "jsonName": "proto3Optional"
+            }
+          ],
+          "enumType": [
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "TYPE_DOUBLE",
+                  "number": 1
+                },
+                {
+                  "name": "TYPE_FLOAT",
+                  "number": 2
+                },
+                {
+                  "name": "TYPE_INT64",
+                  "number": 3
+                },
+                {
+                  "name": "TYPE_UINT64",
+                  "number": 4
+                },
+                {
+                  "name": "TYPE_INT32",
+                  "number": 5
+                },
+                {
+                  "name": "TYPE_FIXED64",
+                  "number": 6
+                },
+                {
+                  "name": "TYPE_FIXED32",
+                  "number": 7
+                },
+                {
+                  "name": "TYPE_BOOL",
+                  "number": 8
+                },
+                {
+                  "name": "TYPE_STRING",
+                  "number": 9
+                },
+                {
+                  "name": "TYPE_GROUP",
+                  "number": 10
+                },
+                {
+                  "name": "TYPE_MESSAGE",
+                  "number": 11
+                },
+                {
+                  "name": "TYPE_BYTES",
+                  "number": 12
+                },
+                {
+                  "name": "TYPE_UINT32",
+                  "number": 13
+                },
+                {
+                  "name": "TYPE_ENUM",
+                  "number": 14
+                },
+                {
+                  "name": "TYPE_SFIXED32",
+                  "number": 15
+                },
+                {
+                  "name": "TYPE_SFIXED64",
+                  "number": 16
+                },
+                {
+                  "name": "TYPE_SINT32",
+                  "number": 17
+                },
+                {
+                  "name": "TYPE_SINT64",
+                  "number": 18
+                }
+              ]
+            },
+            {
+              "name": "Label",
+              "value": [
+                {
+                  "name": "LABEL_OPTIONAL",
+                  "number": 1
+                },
+                {
+                  "name": "LABEL_REQUIRED",
+                  "number": 2
+                },
+                {
+                  "name": "LABEL_REPEATED",
+                  "number": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "OneofDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "options",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.OneofOptions",
+              "jsonName": "options"
+            }
+          ]
+        },
+        {
+          "name": "EnumDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "value",
+              "number": 2,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.EnumValueDescriptorProto",
+              "jsonName": "value"
+            },
+            {
+              "name": "options",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.EnumOptions",
+              "jsonName": "options"
+            },
+            {
+              "name": "reserved_range",
+              "number": 4,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.EnumDescriptorProto.EnumReservedRange",
+              "jsonName": "reservedRange"
+            },
+            {
+              "name": "reserved_name",
+              "number": 5,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_STRING",
+              "jsonName": "reservedName"
+            }
+          ],
+          "nestedType": [
+            {
+              "name": "EnumReservedRange",
+              "field": [
+                {
+                  "name": "start",
+                  "number": 1,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "start"
+                },
+                {
+                  "name": "end",
+                  "number": 2,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "end"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "EnumValueDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "number",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT32",
+              "jsonName": "number"
+            },
+            {
+              "name": "options",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.EnumValueOptions",
+              "jsonName": "options"
+            }
+          ]
+        },
+        {
+          "name": "ServiceDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "method",
+              "number": 2,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.MethodDescriptorProto",
+              "jsonName": "method"
+            },
+            {
+              "name": "options",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.ServiceOptions",
+              "jsonName": "options"
+            }
+          ]
+        },
+        {
+          "name": "MethodDescriptorProto",
+          "field": [
+            {
+              "name": "name",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "name"
+            },
+            {
+              "name": "input_type",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "inputType"
+            },
+            {
+              "name": "output_type",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "outputType"
+            },
+            {
+              "name": "options",
+              "number": 4,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.MethodOptions",
+              "jsonName": "options"
+            },
+            {
+              "name": "client_streaming",
+              "number": 5,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "clientStreaming"
+            },
+            {
+              "name": "server_streaming",
+              "number": 6,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "serverStreaming"
+            }
+          ]
+        },
+        {
+          "name": "FileOptions",
+          "field": [
+            {
+              "name": "java_package",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "javaPackage"
+            },
+            {
+              "name": "java_outer_classname",
+              "number": 8,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "javaOuterClassname"
+            },
+            {
+              "name": "java_multiple_files",
+              "number": 10,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "javaMultipleFiles"
+            },
+            {
+              "name": "java_generate_equals_and_hash",
+              "number": 20,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "jsonName": "javaGenerateEqualsAndHash",
+              "options": {
+                "deprecated": true
+              }
+            },
+            {
+              "name": "java_string_check_utf8",
+              "number": 27,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "javaStringCheckUtf8"
+            },
+            {
+              "name": "optimize_for",
+              "number": 9,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_ENUM",
+              "typeName": ".google.protobuf.FileOptions.OptimizeMode",
+              "defaultValue": "SPEED",
+              "jsonName": "optimizeFor"
+            },
+            {
+              "name": "go_package",
+              "number": 11,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "goPackage"
+            },
+            {
+              "name": "cc_generic_services",
+              "number": 16,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "ccGenericServices"
+            },
+            {
+              "name": "java_generic_services",
+              "number": 17,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "javaGenericServices"
+            },
+            {
+              "name": "py_generic_services",
+              "number": 18,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "pyGenericServices"
+            },
+            {
+              "name": "php_generic_services",
+              "number": 42,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "phpGenericServices"
+            },
+            {
+              "name": "deprecated",
+              "number": 23,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "cc_enable_arenas",
+              "number": 31,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "true",
+              "jsonName": "ccEnableArenas"
+            },
+            {
+              "name": "objc_class_prefix",
+              "number": 36,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "objcClassPrefix"
+            },
+            {
+              "name": "csharp_namespace",
+              "number": 37,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "csharpNamespace"
+            },
+            {
+              "name": "swift_prefix",
+              "number": 39,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "swiftPrefix"
+            },
+            {
+              "name": "php_class_prefix",
+              "number": 40,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "phpClassPrefix"
+            },
+            {
+              "name": "php_namespace",
+              "number": 41,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "phpNamespace"
+            },
+            {
+              "name": "php_metadata_namespace",
+              "number": 44,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "phpMetadataNamespace"
+            },
+            {
+              "name": "ruby_package",
+              "number": 45,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "rubyPackage"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "enumType": [
+            {
+              "name": "OptimizeMode",
+              "value": [
+                {
+                  "name": "SPEED",
+                  "number": 1
+                },
+                {
+                  "name": "CODE_SIZE",
+                  "number": 2
+                },
+                {
+                  "name": "LITE_RUNTIME",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ],
+          "reservedRange": [
+            {
+              "start": 38,
+              "end": 39
+            }
+          ]
+        },
+        {
+          "name": "MessageOptions",
+          "field": [
+            {
+              "name": "message_set_wire_format",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "messageSetWireFormat"
+            },
+            {
+              "name": "no_standard_descriptor_accessor",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "noStandardDescriptorAccessor"
+            },
+            {
+              "name": "deprecated",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "map_entry",
+              "number": 7,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "jsonName": "mapEntry"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ],
+          "reservedRange": [
+            {
+              "start": 4,
+              "end": 5
+            },
+            {
+              "start": 5,
+              "end": 6
+            },
+            {
+              "start": 6,
+              "end": 7
+            },
+            {
+              "start": 8,
+              "end": 9
+            },
+            {
+              "start": 9,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "name": "FieldOptions",
+          "field": [
+            {
+              "name": "ctype",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_ENUM",
+              "typeName": ".google.protobuf.FieldOptions.CType",
+              "defaultValue": "STRING",
+              "jsonName": "ctype"
+            },
+            {
+              "name": "packed",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "jsonName": "packed"
+            },
+            {
+              "name": "jstype",
+              "number": 6,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_ENUM",
+              "typeName": ".google.protobuf.FieldOptions.JSType",
+              "defaultValue": "JS_NORMAL",
+              "jsonName": "jstype"
+            },
+            {
+              "name": "lazy",
+              "number": 5,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "lazy"
+            },
+            {
+              "name": "deprecated",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "weak",
+              "number": 10,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "weak"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "enumType": [
+            {
+              "name": "CType",
+              "value": [
+                {
+                  "name": "STRING",
+                  "number": 0
+                },
+                {
+                  "name": "CORD",
+                  "number": 1
+                },
+                {
+                  "name": "STRING_PIECE",
+                  "number": 2
+                }
+              ]
+            },
+            {
+              "name": "JSType",
+              "value": [
+                {
+                  "name": "JS_NORMAL",
+                  "number": 0
+                },
+                {
+                  "name": "JS_STRING",
+                  "number": 1
+                },
+                {
+                  "name": "JS_NUMBER",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ],
+          "reservedRange": [
+            {
+              "start": 4,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "name": "OneofOptions",
+          "field": [
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ]
+        },
+        {
+          "name": "EnumOptions",
+          "field": [
+            {
+              "name": "allow_alias",
+              "number": 2,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "jsonName": "allowAlias"
+            },
+            {
+              "name": "deprecated",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ],
+          "reservedRange": [
+            {
+              "start": 5,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "name": "EnumValueOptions",
+          "field": [
+            {
+              "name": "deprecated",
+              "number": 1,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ]
+        },
+        {
+          "name": "ServiceOptions",
+          "field": [
+            {
+              "name": "deprecated",
+              "number": 33,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ]
+        },
+        {
+          "name": "MethodOptions",
+          "field": [
+            {
+              "name": "deprecated",
+              "number": 33,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BOOL",
+              "defaultValue": "false",
+              "jsonName": "deprecated"
+            },
+            {
+              "name": "idempotency_level",
+              "number": 34,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_ENUM",
+              "typeName": ".google.protobuf.MethodOptions.IdempotencyLevel",
+              "defaultValue": "IDEMPOTENCY_UNKNOWN",
+              "jsonName": "idempotencyLevel"
+            },
+            {
+              "name": "uninterpreted_option",
+              "number": 999,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption",
+              "jsonName": "uninterpretedOption"
+            }
+          ],
+          "enumType": [
+            {
+              "name": "IdempotencyLevel",
+              "value": [
+                {
+                  "name": "IDEMPOTENCY_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "NO_SIDE_EFFECTS",
+                  "number": 1
+                },
+                {
+                  "name": "IDEMPOTENT",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "extensionRange": [
+            {
+              "start": 1000,
+              "end": 536870912
+            }
+          ]
+        },
+        {
+          "name": "UninterpretedOption",
+          "field": [
+            {
+              "name": "name",
+              "number": 2,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.UninterpretedOption.NamePart",
+              "jsonName": "name"
+            },
+            {
+              "name": "identifier_value",
+              "number": 3,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "identifierValue"
+            },
+            {
+              "name": "positive_int_value",
+              "number": 4,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_UINT64",
+              "jsonName": "positiveIntValue"
+            },
+            {
+              "name": "negative_int_value",
+              "number": 5,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_INT64",
+              "jsonName": "negativeIntValue"
+            },
+            {
+              "name": "double_value",
+              "number": 6,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_DOUBLE",
+              "jsonName": "doubleValue"
+            },
+            {
+              "name": "string_value",
+              "number": 7,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_BYTES",
+              "jsonName": "stringValue"
+            },
+            {
+              "name": "aggregate_value",
+              "number": 8,
+              "label": "LABEL_OPTIONAL",
+              "type": "TYPE_STRING",
+              "jsonName": "aggregateValue"
+            }
+          ],
+          "nestedType": [
+            {
+              "name": "NamePart",
+              "field": [
+                {
+                  "name": "name_part",
+                  "number": 1,
+                  "label": "LABEL_REQUIRED",
+                  "type": "TYPE_STRING",
+                  "jsonName": "namePart"
+                },
+                {
+                  "name": "is_extension",
+                  "number": 2,
+                  "label": "LABEL_REQUIRED",
+                  "type": "TYPE_BOOL",
+                  "jsonName": "isExtension"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SourceCodeInfo",
+          "field": [
+            {
+              "name": "location",
+              "number": 1,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.SourceCodeInfo.Location",
+              "jsonName": "location"
+            }
+          ],
+          "nestedType": [
+            {
+              "name": "Location",
+              "field": [
+                {
+                  "name": "path",
+                  "number": 1,
+                  "label": "LABEL_REPEATED",
+                  "type": "TYPE_INT32",
+                  "jsonName": "path",
+                  "options": {
+                    "packed": true
+                  }
+                },
+                {
+                  "name": "span",
+                  "number": 2,
+                  "label": "LABEL_REPEATED",
+                  "type": "TYPE_INT32",
+                  "jsonName": "span",
+                  "options": {
+                    "packed": true
+                  }
+                },
+                {
+                  "name": "leading_comments",
+                  "number": 3,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_STRING",
+                  "jsonName": "leadingComments"
+                },
+                {
+                  "name": "trailing_comments",
+                  "number": 4,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_STRING",
+                  "jsonName": "trailingComments"
+                },
+                {
+                  "name": "leading_detached_comments",
+                  "number": 6,
+                  "label": "LABEL_REPEATED",
+                  "type": "TYPE_STRING",
+                  "jsonName": "leadingDetachedComments"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "GeneratedCodeInfo",
+          "field": [
+            {
+              "name": "annotation",
+              "number": 1,
+              "label": "LABEL_REPEATED",
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.GeneratedCodeInfo.Annotation",
+              "jsonName": "annotation"
+            }
+          ],
+          "nestedType": [
+            {
+              "name": "Annotation",
+              "field": [
+                {
+                  "name": "path",
+                  "number": 1,
+                  "label": "LABEL_REPEATED",
+                  "type": "TYPE_INT32",
+                  "jsonName": "path",
+                  "options": {
+                    "packed": true
+                  }
+                },
+                {
+                  "name": "source_file",
+                  "number": 2,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_STRING",
+                  "jsonName": "sourceFile"
+                },
+                {
+                  "name": "begin",
+                  "number": 3,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "begin"
+                },
+                {
+                  "name": "end",
+                  "number": 4,
+                  "label": "LABEL_OPTIONAL",
+                  "type": "TYPE_INT32",
+                  "jsonName": "end"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "options": {
+        "javaPackage": "com.google.protobuf",
+        "javaOuterClassname": "DescriptorProtos",
+        "optimizeFor": "SPEED",
+        "goPackage": "google.golang.org/protobuf/types/descriptorpb",
+        "ccEnableArenas": true,
+        "objcClassPrefix": "GPB",
+        "csharpNamespace": "Google.Protobuf.Reflection"
+      },
+      "syntax": "proto2"
+    }
+  ]
+}

@@ -9,11 +9,18 @@ clean:
 
 test: export CGO_ENABLED=1
 test: ## go tool cover -html=coverage.out
+	rm -rf internal/test/pb_gen
 	go test -coverprofile=coverage.out -count=1 ./...
+	cd internal/benchmark && go test -count=1 ./...
 	go run internal/example/main.go > /dev/null 2>&1 || exit 1
 
-benchmark: export CGO_ENABLED=1
-benchmark: ## -gcflags="-N -l -m"
-	@go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
-	cd internal/benchmark && \
+benchmark_cgo: export CGO_ENABLED=1
+benchmark_cgo: ## -gcflags="-N -l -m"
 	go test -v -run=none -bench=Benchmark -memprofile mem.out  -benchmem  -count=5 .
+
+benchmark: export CGO_ENABLED=1
+benchmark: benchmark_cgo
+	@cd internal/benchmark && \
+	go test -v -run=none -bench=Benchmark -memprofile mem_bench.out  -benchmem  -count=5 .
+
+gogoprotobuf:
